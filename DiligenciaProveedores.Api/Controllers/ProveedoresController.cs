@@ -19,6 +19,7 @@ namespace DiligenciaProveedores.Api.Controllers{
         }
 
         [HttpGet]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> Get([FromQuery] PaginationParams paginationParams)
         {
             var paginatedResult = await _proveedorService.ObtenerTodosAsync(paginationParams);
@@ -26,6 +27,7 @@ namespace DiligenciaProveedores.Api.Controllers{
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> Get(Guid id)
         {
             var proveedor = await _proveedorService.ObtenerPorIdAsync(id);
@@ -33,6 +35,7 @@ namespace DiligenciaProveedores.Api.Controllers{
         }
 
         [HttpGet("name")]
+        [Authorize(Roles = "User")]
         public async Task<ActionResult<GetProveedorDto>> GetByRazonSocial(string razonSocial)
         {
             if (string.IsNullOrWhiteSpace(razonSocial))
@@ -49,8 +52,8 @@ namespace DiligenciaProveedores.Api.Controllers{
 
             return Ok(proveedor);
         }
-
         [HttpPost]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> Post([FromBody] CreateProveedorDto dto)
         {
             var nuevo = await _proveedorService.CrearAsync(dto);
@@ -58,6 +61,7 @@ namespace DiligenciaProveedores.Api.Controllers{
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> Put(Guid id, [FromBody] UpdateProveedorDto dto)
         {
             await _proveedorService.ActualizarAsync(id, dto);
