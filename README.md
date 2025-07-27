@@ -24,7 +24,7 @@ https://ey-diligencia-proveedores-web-bmehh2ghfnhmgnat.northcentralus-01.azurewe
 
 ## Documentación Interactiva (Swagger UI)
 
-Puedes explorar y probar los endpoints de la API directamente usando la interfaz de Swagger UI. Es una herramienta invaluable para desarrolladores que consumen la API.
+Puedes explorar y probar los endpoints de la API directamente usando la interfaz de Swagger UI.
 
 ```
 https://ey-diligencia-proveedores-web-bmehh2ghfnhmgnat.northcentralus-01.azurewebsites.net/swagger
