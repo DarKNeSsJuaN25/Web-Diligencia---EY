@@ -46,7 +46,7 @@ El backend está diseñado siguiendo principios de **Arquitectura Limpia (Clean 
 
 ## Diagrama
 
-![backend-net.drawio.png](/home/laredo/Descargas/backend-net.drawio.png)
+![backend-net.drawio.png](backend-net.drawio.png)
 
 ## Capas
 
