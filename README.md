@@ -493,3 +493,32 @@ La interacción con la DB se realiza a través del patrón Repositorio.
 
 - **Interfaces de Repositorio (Capa `Domain`):** Definen los contratos de acceso a datos (ej., `IProveedorRepository`).
 - **Implementaciones de Repositorio (Capa `Infrastructure`):** Contienen la lógica para usar `ApplicationDbContext` de EF Core.
+
+# Oportunidades de Mejora y Evolución Futura
+
+Este componente, al ser el cerebro del sistema, tiene varias áreas donde se puede optimizar su rendimiento, seguridad y proceso de desarrollo.
+
+## Automatización del Despliegue (CI/CD)
+
+Actualmente, la actualización del esquema de la base de datos se maneja manualmente. Automatizar este paso es crucial para la eficiencia y la reducción de errores.
+
+**Integración de Migraciones de Base de Datos en CI/CD**:  
+Incluir el comando `dotnet ef database update` como un paso de pre-despliegue en el pipeline de Integración Continua/Despliegue Continuo (CI/CD) (ej., Azure DevOps, GitHub Actions). Esto asegurará que el esquema de la base de datos siempre esté sincronizado con la última versión del código en cada despliegue, eliminando la intervención manual y posibles inconsistencias.
+
+## Estrategias de Escalabilidad y Optimización de Costos
+
+Considerando las limitaciones experimentadas en entornos de desarrollo, es fundamental planificar la escalabilidad de la Web App Backend.
+
+**Escalabilidad Horizontal (Scale-out)**:  
+Para el Web App Backend en Azure App Service, la recomendación es la escalabilidad horizontal. Esto implica añadir más instancias de la aplicación para distribuir la carga de trabajo y mejorar la tolerancia a fallos. Azure App Services facilita esta configuración automáticamente en planes de servicio superiores, permitiendo que la aplicación se adapte dinámicamente a la demanda sin incurrir en costos fijos excesivos por recursos subutilizados.
+
+## Fortalecimiento de la Seguridad y Gestión de Identidades
+
+Aunque el sistema utiliza JWT para la autenticación, hay espacio para una gestión de identidades y permisos más centralizada y robusta.
+
+**Gestión Centralizada de Identidades (OAuth/OpenID Connect)**:  
+Implementar un proveedor de identidad externo como Keycloak (o Azure AD B2C para una integración nativa en Azure) permitirá una gestión de usuarios y autenticación más sofisticada. Esto habilitaría:
+
+- **Autenticación Centralizada**: Un único punto de entrada para el login de usuarios.
+- **Control de Acceso Basado en Roles (RBAC)**: Definición y asignación de roles granulares para controlar qué acciones puede realizar cada usuario.
+- **Integración Sencilla**: Facilitar la conexión con otras aplicaciones o servicios empresariales en el futuro.
