@@ -1,4 +1,4 @@
-# Documentación de la API Diligencia de Proveedores - BackEnd
+# Documentación - Diligencia de Proveedores - BackEnd .NET
 
 Esta sección detalla la API RESTful que gestiona la información de proveedores y facilita los procesos de "screening".
 
